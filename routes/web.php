@@ -14,13 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ComicController::class, "index"])->name("comics");
-
-/* Route::get('/comics', function () {
-    return view('comic', [
-        "comic" => config("comics")
-    ]);
-})->name("comic"); 
-*/ 
-
 Route::get("/comics", [ComicController::class, "index"])->name("comics.index");
+
+Route::get("/", [ComicController::class, "index"])->name("comics");
+
+Route::get('/comics', function () {
+    return view('comics', [
+        "comics" => config("comics")
+    ]);
+})->name("comics"); 
+
+

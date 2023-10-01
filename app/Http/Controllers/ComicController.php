@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Resources\Views\Comics\Index;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 

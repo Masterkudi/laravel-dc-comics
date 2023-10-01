@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Resources\Views\Comics\Index;
 use App\Models\Comic;
 
 class ComicsTableSeeder extends Seeder {
@@ -224,21 +225,22 @@ class ComicsTableSeeder extends Seeder {
      * Run the database seeds.
      */
     public function run(): void {
+        \App\Models\Comic::truncate();
 
         foreach ($this->datiGrezzi as $comic) {
             $newComic = new \App\Models\Comic();
 
             $newComic = new Comic();
             
-            $newComic->thumb = $comic["thumb"];
+            $newComic->image = $comic["thumb"];
             $newComic->title = $comic["title"];
-            // $newComic->description = $comic["description"];
-            // $newComic->price = intval(str_replace(" $", "", $comic["price"]));
+            $newComic->description = $comic["description"];
+            $newComic->price = intval(str_replace(" $", "", $comic["price"]));
             $newComic->series = $comic["series"];
             $newComic->sale_date = $comic["sale_date"];
             $newComic->type = $comic["type"];
-            // $newComic->artists = $comic["artists"];
-            // $newComic->writers = $comic["writers"]; 
+            $newComic->artists = $comic["artists"];
+            $newComic->writers = $comic["writers"]; 
 
             $newComic->save();
     }
