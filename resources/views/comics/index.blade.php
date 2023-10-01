@@ -19,7 +19,7 @@
                                 <p class="card-text"><strong>{{ $comic->type }}</strong></p>
                             </div>
                             <div class="card-footer">
-                                <strong>{{ $comic->price }}</strong>
+                                <strong>{{ $comic->price }}$</strong>
                             </div>
                         </div>
                     </div>

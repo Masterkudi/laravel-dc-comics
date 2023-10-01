@@ -23,7 +23,7 @@
                     <h4>DC</h4>
                     <ul>
                         <li>Terms Of Use</li>
-                        <li>Privacy policy (New)</li>
+                        <li>Privacy policy</li>
                         <li>Ad Choices</li>
                         <li>Advertising</li>
                         <li>Jobs</li>
