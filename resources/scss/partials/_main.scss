@@ -1,0 +1,50 @@
+.jumbo-container {
+    height: 500px;
+    overflow: hidden;
+  }
+  
+  .jumbotron {
+    height: 220%;
+    width: 100%;
+  }
+  
+  .banner.nav {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+  
+  .gallery {
+    background-color: #1C1C1C;
+    color: white;
+    padding: 2rem 5rem;
+  }
+  
+  .gallery img {
+    width: 100%;
+  }
+  
+  .gallery .btn {
+    display: flex;
+    justify-content: center;
+    max-width: 10%;
+  }
+  
+  .banner {
+    background-color: #0082F9;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    font-size: .5rem;
+  }
+  
+  .banner .nav-link {
+    color: #ffffff;
+    padding: 2rem;
+  
+  }
+  
+  .banner img {
+    height: 2rem;
+    margin: 1rem;
+  }

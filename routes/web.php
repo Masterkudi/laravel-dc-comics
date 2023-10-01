@@ -15,3 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ComicController::class, "index"])->name("comics");
+
+Route::get('/products', function () {
+    return view('characters', [
+        "characters" => config("comics")
+    ]);
+})->name("characters");

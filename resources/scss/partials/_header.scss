@@ -1,0 +1,19 @@
+header {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    font-size: .7rem;
+}
+
+header img {
+    width: 5rem;
+}
+
+header .nav-link {
+    color: #000;
+    padding: 40px 0;
+}
+header :hover {
+    color: #0086FF;
+}
