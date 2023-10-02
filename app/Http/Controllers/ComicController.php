@@ -4,12 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
-class ComicController extends Controller
-{
-
-    public function index()
-    {
+class ComicController extends Controller {
+    public function index() {
         $comics = Comic::all();
 
         /* foreach ($comics as $key => $comics) {
@@ -19,8 +17,7 @@ class ComicController extends Controller
         return view("comics.index", ["comics" => $comics]);
     }
 
-    public function show($id)
-    {
+    public function show($id) {
         $comics = Comic::findOrFail($id);
 
         /* if (!comics) {
@@ -29,10 +26,30 @@ class ComicController extends Controller
 
         return view("comics.show", ["comics" => $comics]);
 
-        return redirect()->route("comics.show", $comics->id);
+        // return redirect()->route("comics.show", $comics->id);
     }
 
-    /* truncate
+    public function create() {
+        return view("comics.create");
+    }
+
+    public function store(Request $request) {
+            $comics = $request->all();
+
+            $newComic = new Comic();
+            
+            $newComic->image = $comics["image"];
+            $newComic->title = $comics["title"];
+            $newComic->description = $comics["description"];
+            $newComic->series = $comics["series"];
+            $newComic->sale_date = $comics["sale_date"];
+            $newComic->type = $comics["type"];
+            $newComic->price = intval(str_replace(" $", "", $comics["price"]));
+
+            $newComic->save();
+    }
+
+    /* TRUNCATE
 
 
     private function truncate($text, $chars = 25)

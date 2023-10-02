@@ -9,4 +9,12 @@ class Comic extends Model
 {
     use HasFactory;
 
+    protected $table = "comics";
+    
+// CASTS
+
+    protected $casts = [
+        
+    ];
+
 }

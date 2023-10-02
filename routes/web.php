@@ -21,9 +21,13 @@ Route::get('/products', function () {
 
 Route::get("/", [ComicController::class, "index"])->name("comics");
 
-// READ
+// CREATE
+Route::get("/comics/create", [ComicController::class, "create"])->name("comics.create");
+Route::post("/comics", [ComicController::class, "store"])->name("comics.store");
 
+// READ
 Route::get("/comics", [ComicController::class, "index"])->name("comics.index");
 Route::get("/comics/{comics}", [ComicController::class, "show"])->name("comics.show");
 
+// UPDATE
 
