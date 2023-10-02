@@ -18,10 +18,10 @@ Route::get("/comics", [ComicController::class, "index"])->name("comics.index");
 
 Route::get("/", [ComicController::class, "index"])->name("comics");
 
-Route::get('/comics', function () {
-    return view('comics', [
-        "comics" => config("comics")
+Route::get('/products', function () {
+    return view('characters', [
+        "characters" => config("comics")
     ]);
-})->name("comics"); 
+})->name("characters"); 
 
 

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+// use Resources\Views\Comics\Index;
 
 return new class extends Migration
 {
@@ -21,8 +22,8 @@ return new class extends Migration
             $table->string("series");
             $table->dateTime("sale_date");
             $table->string("type");
-            $table->string("artists", 255);
-            $table->string("writers", 255);
+            // $table->string("artists", 255);
+            // $table->string("writers", 255);
 
             $table->timestamps();
         });

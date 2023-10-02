@@ -12,11 +12,11 @@
                     @foreach ($comics as $comic)
                         <div class="col">
                             <div class="card p-3">
-                                <img src="{{ $comic['thumb'] }}" alt="comic-img">
+                                <img src="{{ $comic['image'] }}" alt="comic-img">
                                 <div class="card-body bg-white text-black">
                                     <h3 class="card-title">{{ $comic->title }}</h3>
                                     <p class="card-text">{{ $comic->series }}</p>
-                                    <p class="card-text">{{ $comic->sale_date->format('Y/m/d') }}</p>
+                                    <p class="card-text">{{ $comic->sale_date }}</p>
                                     <p class="card-text"><strong>{{ $comic->type }}</strong></p>
                                     <p class="card-text">{{ $comic->description }}</p>
                                 </div>
