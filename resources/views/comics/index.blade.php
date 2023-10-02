@@ -21,7 +21,7 @@
                                     <p class="card-text">{{ $comic->description }}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <strong>{{ intval(str_replace(" $", "", $comic["price"])) }}$</strong>
+                                    <strong> {{ $comic->price }}$  </strong>
                                 </div>
                             </div>
                         </div>
