@@ -1,32 +1,35 @@
 @extends('layouts.public')
 
 @section('content')
-        <div class="gallery">
-            <div class="gallery d-flex">
-                <div class="row row-cols-4 g-5 justify-content-center">
+    <div class="container">
 
-                    @foreach ($comics as $comic)
-                        <div class="col">
-                            <div class="card p-3" href="{{ route("comics.show", $comic->id) }}">
-                                <img src="{{ $comic->image }}" alt="comic-img">
-                                <div class="card-body bg-white text-black">
-                                    <h3 class="card-title">{{ $comic->title }}</h3>
-                                    <p class="card-text">{{ $comic->series }}</p>
-                                    <p class="card-text">{{ $comic->sale_date }}</p>
-                                    <p class="card-text"><strong>{{ $comic->type }}</strong></p>
-                                    <p class="card-text">{{ $comic->description }}</p>
-                                </div>
-                                <div class="card-footer">
-                                    <strong> {{ $comic->price }}$  </strong>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
+        <form action="{{ route("comics.store")}}" method="POST">
+            @csrf()
+
+            <h1 class="title text-center m-4">Insert new Comic</h1>
+
+            <div class="mb-3"><label class="form-label">title</label><input type="text" class="form-control" name="title"></div>
+            <div class="mb-3"><label class="form-label">image</label><input type="text" class="form-control" name="image"></div>
+            <div class="mb-3"><label class="form-label">description</label>
+                <textarea class="form-control" name="description"></textarea>
             </div>
-        <div class="btn btn-primary text-white text-center rounded">
-            LOAD MORE
-        </div>
-        </div>
+            <div class="mb-3"><label class="form-label">price</label><input type="number" class="form-control" name="price"></div>
+            <div class="mb-3"><label class="form-label">series</label><input type="text" class="form-control" name="series"></div>
+            <div class="mb-3"><label class="form-label">sale date</label><input type="date" class="form-control" name="sale date"></div>
+            <div class="mb-3"><label class="form-label">type</label>
+                <select class="form-select" name="type">
+                    <option value="comic_book">Comic Book</option>
+                    <option value="graphic_novel">Graphic Novel</option>
+                </select>
+                @error('type')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>       
+        
+           <div class="buttons mt-5 mb-5">
+            <button class="btn btn-primary text-white text-center rounded p-2">SAVE</button>  
+            <a class="btn btn-secondary text-white text-center rounded p-2" href={{ route('comics.index') }}>CANCEL</a class="buttons mt-3">  
+           </div>
+        </form>
     </div>
 @endsection

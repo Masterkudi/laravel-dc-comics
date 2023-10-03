@@ -2,7 +2,7 @@
     <img src="/img/dc-logo.png" alt="Logo DC">
 
     <ul class="nav nav-underline">
-        <li class="nav-item"><a href="/characters" class="nav-link">CHARACTERS</a></li>
+        <li class="nav-item"><a href="{{ route('comics.create') }}" class="nav-link">INSERT NEW</a></li>
         <li class="nav-item"><a href="/comics" class="nav-link">COMICS</a></li>
         <li class="nav-item"><a href="/movies" class="nav-link">MOVIES</a></li>
         <li class="nav-item"><a href="/tv" class="nav-link">TV</a></li>

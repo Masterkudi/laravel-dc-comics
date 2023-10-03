@@ -17,6 +17,8 @@ class ComicController extends Controller {
         return view("comics.index", ["comics" => $comics]);
     }
 
+    // SHOW FUNCTION
+
     public function show($id) {
         $comics = Comic::findOrFail($id);
 
@@ -29,9 +31,13 @@ class ComicController extends Controller {
         // return redirect()->route("comics.show", $comics->id);
     }
 
+    // CREATE FUNCTION
+
     public function create() {
-        return view("comics.create");
+        return view("comics.index");
     }
+
+    // STORE FUNCTION
 
     public function store(Request $request) {
             $comics = $request->all();
@@ -41,10 +47,10 @@ class ComicController extends Controller {
             $newComic->image = $comics["image"];
             $newComic->title = $comics["title"];
             $newComic->description = $comics["description"];
+            $newComic->price = intval(str_replace(" $", "", $comics["price"]));
             $newComic->series = $comics["series"];
             $newComic->sale_date = $comics["sale_date"];
             $newComic->type = $comics["type"];
-            $newComic->price = intval(str_replace(" $", "", $comics["price"]));
 
             $newComic->save();
     }
