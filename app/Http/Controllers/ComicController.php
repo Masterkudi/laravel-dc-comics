@@ -6,8 +6,10 @@ use App\Models\Comic;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class ComicController extends Controller {
-    public function index() {
+class ComicController extends Controller
+{
+    public function index()
+    {
         $comics = Comic::all();
 
         /* foreach ($comics as $key => $comics) {
@@ -19,7 +21,8 @@ class ComicController extends Controller {
 
     // SHOW FUNCTION
 
-    public function show($id) {
+    public function show($id)
+    {
         $comics = Comic::findOrFail($id);
 
         /* if (!comics) {
@@ -33,26 +36,30 @@ class ComicController extends Controller {
 
     // CREATE FUNCTION
 
-    public function create() {
-        return view("comics.index");
+    public function create()
+    {
+        // return redirect()->route("comics.create");
+
+        return view("comics.create");
     }
 
     // STORE FUNCTION
 
-    public function store(Request $request) {
-            $comics = $request->all();
+    public function store(Request $request)
+    {
+        $comics = $request->all();
 
-            $newComic = new Comic();
-            
-            $newComic->image = $comics["image"];
-            $newComic->title = $comics["title"];
-            $newComic->description = $comics["description"];
-            $newComic->price = intval(str_replace(" $", "", $comics["price"]));
-            $newComic->series = $comics["series"];
-            $newComic->sale_date = $comics["sale_date"];
-            $newComic->type = $comics["type"];
+        $newComic = new Comic();
 
-            $newComic->save();
+        $newComic->image = $comics["image"];
+        $newComic->title = $comics["title"];
+        $newComic->description = $comics["description"];
+        $newComic->price = intval(str_replace(" $", "", $comics["price"]));
+        $newComic->series = $comics["series"];
+        $newComic->sale_date = $comics["sale_date"];
+        $newComic->type = $comics["type"];
+
+        $newComic->save();
     }
 
     /* TRUNCATE
