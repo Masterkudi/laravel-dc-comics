@@ -29,6 +29,7 @@ Route::post("/comics", [ComicController::class, "store"])->name("comics.store");
 
 // READ
 Route::get("/comics", [ComicController::class, "index"])->name("comics.index");
+Route::get("/comics/trash", [ComicController::class, "trash"])->name("comics.trash");
 Route::get("/comics/{comics}", [ComicController::class, "show"])->name("comics.show");
 
 // UPDATE

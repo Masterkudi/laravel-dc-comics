@@ -3,6 +3,8 @@
 @section('content')
     <div class="container">
 
+        <!-- AGGIUNGO UN FORM PER CREARE NUOVI DATI -->
+
         <form action="{{ route('comics.store') }}" method="POST">
             @csrf()
 
@@ -23,8 +25,8 @@
                     name="sale date"></div>
             <div class="mb-3"><label class="form-label">type</label>
                 <select class="form-select" name="type">
-                    <option value="comic_book">Comic Book</option>
-                    <option value="graphic_novel">Graphic Novel</option>
+                    <option value="comic book">Comic Book</option>
+                    <option value="graphic novel">Graphic Novel</option>
                 </select>
                 @error('type')
                     <div class="invalid-feedback">{{ $message }}</div>

@@ -21,7 +21,7 @@
                                     <p class="card-text">{{ $comic->description }}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <strong> {{ $comic->price }}$  </strong>
+                                    <strong> {{ $comic->price }} </strong>
                                 </div>
                             </div>
                         </div>

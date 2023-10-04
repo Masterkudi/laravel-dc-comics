@@ -6,8 +6,10 @@ use App\Models\Comic;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class ComicController extends Controller {
-    public function index() {
+class ComicController extends Controller
+{
+    public function index()
+    {
         $comics = Comic::all();
 
         /* foreach ($comics as $key => $comics) {
@@ -15,6 +17,18 @@ class ComicController extends Controller {
         } */
 
         return view("comics.index", ["comics" => $comics]);
+    }
+
+    // TRASH FUNCTION (crea una pagina index con i prodotti cancellati in soft-delete, tramite un button li potrò ripristinare o eliminare definitivamente)
+
+    public function trash() {
+        $comics = Comic::onlyTrashed();
+
+        /* foreach ($comics as $key => $comics) {
+            $comics[$key]["short_description"] = $this->truncate($comics["description"], 100);
+        } */
+
+        return view("comics.trash", ["comics" => $comics]);
     }
 
     // SHOW FUNCTION
@@ -43,7 +57,8 @@ class ComicController extends Controller {
 
     // STORE FUNCTION
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
         $comics = $request->all();
 
@@ -60,6 +75,45 @@ class ComicController extends Controller {
         $newComic->save();
 
         return redirect()->route("comics.index", $newComic->id);
+    }
+
+    // EDIT FUNCTION
+
+    public function edit($id)
+    {
+        $comics = Comic::findOrFail($id);
+
+        return view("comics.edit", ["comics" => $comics]);
+    }
+
+    // UPDATE FUNCTION
+
+    public function update(Request $request, $id) {
+        $comics = Comic::findOrFail($id);
+        
+        $comics = $request->all();
+
+        $comic = new Comic();
+
+        $comic->image = $comics["image"];
+        $comic->title = $comics["title"];
+        $comic->description = $comics["description"];
+        $comic->price = intval(str_replace(" $", "", $comics["price"]));
+        $comic->series = $comics["series"];
+        $comic->sale_date = $comics["sale_date"];
+        $comic->type = $comics["type"];
+
+        $comic->update($comics);
+    }
+
+    // DELETE FUNCTION
+
+    public function destroy($id) {
+        $comics = Comic::findOrFail($id);
+
+        $comics->delete();
+
+        return redirect()->route("comics.index");
     }
 
     /* TRUNCATE

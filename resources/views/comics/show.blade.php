@@ -17,6 +17,13 @@
 
     <div class="p-4 ms-5">
         <a href="{{ route('comics.index', ['id' => $comics->id]) }}" class="btn btn-primary">back</a>
+        <a href="{{ route('comics.edit', ['id' => $comics->id]) }}" class="btn btn-warning">edit</a>
+
+        <form action="{{ route('comics.destroy', $comics->id) }}" method="POST" class="d-inline-block">
+            @csrf
+            @method("DELETE")
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
     </div>
     
 @endsection
