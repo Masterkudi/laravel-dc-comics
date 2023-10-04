@@ -6,10 +6,8 @@ use App\Models\Comic;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class ComicController extends Controller
-{
-    public function index()
-    {
+class ComicController extends Controller {
+    public function index() {
         $comics = Comic::all();
 
         /* foreach ($comics as $key => $comics) {
@@ -45,8 +43,8 @@ class ComicController extends Controller
 
     // STORE FUNCTION
 
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
+
         $comics = $request->all();
 
         $newComic = new Comic();
@@ -60,6 +58,8 @@ class ComicController extends Controller
         $newComic->type = $comics["type"];
 
         $newComic->save();
+
+        return redirect()->route("comics.index", $newComic->id);
     }
 
     /* TRUNCATE
