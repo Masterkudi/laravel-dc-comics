@@ -7,11 +7,11 @@
     <div>
         <div class="gallery">
             <div class="gallery">
-                <div class="row row-cols-4 g-5 justify-content-center">
+                <div class="row row-cols-4 g-4 justify-content-center">
 
                     @foreach ($comics as $comic)
                         <div class="col">
-                            <div class="card p-3">
+                            <div class="card p-2">
                                 <img src="{{ $comic["image"] }} alt="comic-img">
                                 <div class="card-body bg-white text-center">
                                     <a href="{{ route("comics.show", $comic->id) }}"></a>
